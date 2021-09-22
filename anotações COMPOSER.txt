@@ -1,0 +1,93 @@
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= Composer =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+--> É um gerenciador de dependencias utilizado no PHP
+--> Para instalar o Composer e o PHP de maneira fácil, pode-se utilizar o Chocolatey;
+
+
+Atualizar Composer:
+--> composer self-update
+
+Verificar versão instalada do Composer:
+--> composer --version
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Passos para configurar o Composer no projeto atual:
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+Digitar composer init;
+--> Esse comando vai solicitar o nome do pacote, que é composto pelo vendor(fabricante) e o package name.
+No vendor geralmente é usado o nome do usuario do github e, no package name é usado o nome do pacote que você está criando;
+
+--> Em seguida, será solicitado a descrição do pacote (Opcional);
+--> Em seguida, será solicitado o autor (Opcional);
+--> Em seguida, será solicitado o Package Type (library, project, metapackage, composer-plugin) (Opcional);
+--> Em seguida, será solicitado o tipo de Licensa (MIT, GNU, etc) (Opcional);
+
+Depois que o arquivo composer.json for gerado, é preciso rodar o comando:
+
+--> composer install
+
+Esse comando vai ler todo o arquivo composer.json e vai atualizar e 
+instalar todas as dependencias necessárias que foram indicadas no arquivo composer.json;
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Adicionando ou removendo um pacote
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+--> Para adicionar ou instalar um novo pacote, basta rodar o comando abaixo 
+e substituir package_name pelo nome do pacote a ser instalado no projeto:
+
+composer required package_name
+
+
+--> Para instalar um pacote dev, basta rodar o mesmo código acima e adicionar um --dev no final:
+
+composer required package_name --dev
+
+
+--> Para remover um pacote já instalado, basta executar o comando abaixo e substituir package_name pelo nome do pacote:
+
+composer remove package_name
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=
+
+
+--> Diferença entre required e required-dev:
+
+Os pacotes incluídos no required são os pacotes necessários para o funcionamento de seu projeto, 
+enquanto os pacotes incluídos no required-dev não são cruciais para o funcionamento do projeto;
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=
+AUTOLOAD
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=
+
+Este novo atributo no composer.json, informa o nome dos namespaces e seus respectivos diretórios;
+
+Ex)
+
+"autoload": {
+    "psr-4": {
+        "NAMESPACE": "DIRETORIO"
+    }
+}
+
+Depois de informar os arquivos de autoload, é necessário rodar um dos comandos abaixo para atualizar o arquivo autoload.php:
+
+composer dump
+composer dump-autoload
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=
+LIMPANDO CACHE DO COMPOSER
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=
+
+--> Para limpar o cache do composer, basta executar o seguinte comando:
+
+composer clearcache
